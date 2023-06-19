@@ -1,0 +1,57 @@
+{
+  "devDependencies": {
+    "jasmine": "^5.0.2"
+  },
+  "name": "bank-challenge",
+  "description": "This challenge helps you practice your OO design skills.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "color-convert": "^2.0.1",
+    "ansi-styles": "^6.2.1",
+    "balanced-match": "^1.0.2",
+    "brace-expansion": "^2.0.1",
+    "ansi-regex": "^6.0.1",
+    "color-name": "^1.1.4",
+    "eastasianwidth": "^0.2.0",
+    "cross-spawn": "^7.0.3",
+    "glob": "^10.2.7",
+    "foreground-child": "^3.1.1",
+    "is-fullwidth-code-point": "^3.0.0",
+    "isexe": "^2.0.0",
+    "jackspeak": "^2.2.1",
+    "lru-cache": "^9.1.2",
+    "emoji-regex": "^9.2.2",
+    "path-scurry": "^1.9.2",
+    "jasmine-core": "^5.0.1",
+    "shebang-command": "^2.0.0",
+    "minipass": "^6.0.2",
+    "shebang-regex": "^3.0.0",
+    "path-key": "^3.1.1",
+    "signal-exit": "^4.0.2",
+    "string-width-cjs": "^4.2.3",
+    "string-width": "^5.1.2",
+    "strip-ansi": "^7.1.0",
+    "strip-ansi-cjs": "^6.0.1",
+    "which": "^2.0.2",
+    "minimatch": "^9.0.1",
+    "wrap-ansi": "^8.1.0",
+    "wrap-ansi-cjs": "^7.0.0"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alx-askw/bank-challenge.git"
+  },
+  "author": "Alex A",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alx-askw/bank-challenge/issues"
+  },
+  "homepage": "https://github.com/alx-askw/bank-challenge#readme"
+}
