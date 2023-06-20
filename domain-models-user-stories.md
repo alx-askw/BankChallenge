@@ -11,9 +11,12 @@ Domain Model:
 
 Objects | Properties | Messages | Output
 --------|------------|----------|-------
-transactionHandler |            | deposit(amount) | @void
-bankAccount   | balance            | deposit(amount)          | @int
+transactionHandler |            | deposit(int) | @void
+bankAccount   | balance@int            | deposit(amount)          | @int
 
+Tests:
+
+-Balance is increased by the correct amount
 
 ## Withdraw
 As a client,
@@ -26,8 +29,11 @@ Domain Model:
 
 Objects | Properties | Messages | Output
 --------|------------|----------|-------
- |            |  | 
-   |        |           | 
+bankAccount   | balance@int | withdraw(amount), deposit(amount)| @int
+
+Tests:
+
+-Balance is decreased by the correct amount
 
 ## Keeping history of transactions
 As a client, 
@@ -40,9 +46,12 @@ Domain Model:
 
 Objects | Properties | Messages | Output
 --------|------------|----------|-------
- |            |  | 
+bankAccount | transactionHistory@Array\[\]            |  |  @void 
    |        |           | 
 
+Tests:
+
+-History is correctly recorded
 
 ## Print Bank Statement
 As a client,
@@ -55,9 +64,12 @@ Domain Model:
 
 Objects | Properties | Messages | Output
 --------|------------|----------|-------
- |            |  | 
+stateMentHandler |            |  | 
    |        |           | 
 
+Tests:
+
+-statement is formatted correctly
 
 ## Not withdrawing more money than the account has
 As the bank manager,
@@ -70,8 +82,12 @@ Domain Model:
 
 Objects | Properties | Messages | Output
 --------|------------|----------|-------
- |            |  | 
-   |        |           | 
+bankAccount | balance            | validTransaction()  | @void 
+transactionHandler   |        | deposit(amount), withdraw(amount)          | 
+
+Tests:
+
+-Balance doesn't go below zero
 
 ## Extended Criteria - formatting the console
 As a client,
@@ -87,6 +103,10 @@ Objects | Properties | Messages | Output
  |            |  | 
    |        |           | 
 
+Tests:
+
+-Visually confirm this?
+
 
 ## Notes:
     -Extended features to consider: 
@@ -96,8 +116,10 @@ Objects | Properties | Messages | Output
     -Current Thoughts on classes:
         -Transactions:
             -handles the withdraw and deposit functions
+            -static?
         -Statement handler;
             -handles formatting and printing of statement
+            -static?
         -bank account:
             -has properties such as:
                 -current balance
