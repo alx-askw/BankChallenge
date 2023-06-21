@@ -53,6 +53,25 @@ Tests:
 
 -History is correctly recorded
 
+## Dating transactions
+As I client,
+I would like bank statements to include the dat of each transaction,
+So that I can track my money.
+
+Functionality: Use JS to get the date and add them to the statement.
+
+Domain Model: 
+
+Objects | Properties | Messages | Output
+--------|------------|----------|-------
+ |  |  |  
+   |        |           | 
+
+Tests:
+    -Date is correct
+    -Date is formatted correctly
+    -Date is called?
+
 ## Print Bank Statement
 As a client,
 I would like to be able to print a bank statement,
