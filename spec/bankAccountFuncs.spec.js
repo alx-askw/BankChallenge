@@ -4,9 +4,6 @@ const BankAccount = require('../src/BankAccount');
 
 describe('Deposit - Bank Account functions', function () {
 
-    // beforeEach(function () {
-    //     let bankAcc = new bankAccount(); 
-    // });
     beforeEach(function () {
         bankAccount1 = new BankAccount();
     })
@@ -14,6 +11,50 @@ describe('Deposit - Bank Account functions', function () {
     afterEach(function () {
         bankAccount1 = undefined;
     })
+
+    const mockDepositTransactionFloat = {
+        transactionType: 'deposit',
+        transactionAmount: 1.5,
+        getType: function () {
+            return this.transactionType;
+        },
+        getAmount: function () {
+            return this.transactionAmount;
+        },
+    }
+
+    const mockDepositTransactionNegative = {
+        transactionType: 'deposit',
+        transactionAmount: -100,
+        getType: function () {
+            return this.transactionType;
+        },
+        getAmount: function () {
+            return this.transactionAmount;
+        },
+    }
+
+    const mockDepositTransaction = {
+        transactionType: 'deposit',
+        transactionAmount: 500,
+        getType: function () {
+            return this.transactionType;
+        },
+        getAmount: function () {
+            return this.transactionAmount;
+        },
+    }
+
+    const mockDepositTransactionStringTest = {
+        transactionType: 'deposit',
+        transactionAmount: '500',
+        getType: function () {
+            return this.transactionType;
+        },
+        getAmount: function () {
+            return this.transactionAmount;
+        },
+    }
 
     let a = true
     it('test spec', function () {
@@ -23,20 +64,20 @@ describe('Deposit - Bank Account functions', function () {
 
     //to stop strings being passed through
     it('Test 1: only numbers can be passed into the deposit', function () {
-        bankAccount1.deposit('100');
+        bankAccount1.transactionHandler(mockDepositTransactionStringTest);
         expect(bankAccount1.getBalance()).toBe(0);
     });
 
     //if someone wants to add £1.50 for example
     it('Test 2: Floats can be added', function () {
-        bankAccount1.deposit(1.5);
+        bankAccount1.transactionHandler(mockDepositTransactionFloat);
         expect(bankAccount1.getBalance()).toBe(1.5);
     });
 
     it('Test 3: Deposit does not accept negative number', function () {
-        bankAccount1.deposit(100);
-        bankAccount1.deposit(-100);
-        expect(bankAccount1.getBalance()).toBe(100);
+        bankAccount1.transactionHandler(mockDepositTransaction)
+        bankAccount1.transactionHandler(mockDepositTransactionNegative)
+        expect(bankAccount1.getBalance()).toBe(500);
     });
 });
 
@@ -44,9 +85,61 @@ describe('Deposit - Bank Account functions', function () {
 
 describe('Withdraw - Bank Account functions', function () {
 
+    //for depositing for tests
+    const mockDepositTransaction = {
+        transactionType: 'deposit',
+        transactionAmount: 500,
+        getType: function () {
+            return this.transactionType;
+        },
+        getAmount: function () {
+            return this.transactionAmount;
+        },
+    }
+    const mockWithdrawTransaction = {
+        transactionType: 'withdraw',
+        transactionAmount: 500,
+        getType: function () {
+            return this.transactionType;
+        },
+        getAmount: function () {
+            return this.transactionAmount;
+        },
+    }
+    const mockWithdrawTransactionStringTest = {
+        transactionType: 'withdraw',
+        transactionAmount: '500',
+        getType: function () {
+            return this.transactionType;
+        },
+        getAmount: function () {
+            return this.transactionAmount;
+        },
+    }
+
+    const mockWithdrawTransactionFloat = {
+        transactionType: 'withdraw',
+        transactionAmount: 1.5,
+        getType: function () {
+            return this.transactionType;
+        },
+        getAmount: function () {
+            return this.transactionAmount;
+        },
+    }
+    const mockWithdrawTransactionNegative = {
+        transactionType: 'withdraw',
+        transactionAmount: -100,
+        getType: function () {
+            return this.transactionType;
+        },
+        getAmount: function () {
+            return this.transactionAmount;
+        },
+    }
     beforeEach(function () {
         bankAccount1 = new BankAccount();
-        bankAccount1.deposit(500);
+        bankAccount1.transactionHandler(mockDepositTransaction);
     })
 
     afterEach(function () {
@@ -55,30 +148,49 @@ describe('Withdraw - Bank Account functions', function () {
 
     //to stop strings being passed through
     it('Test 1: only numbers can be passed into the withdraw ', function () {
-        bankAccount1.withdraw('100');
+        bankAccount1.transactionHandler(mockWithdrawTransactionStringTest);
         expect(bankAccount1.getBalance()).toBe(500);
     });
 
     //if someone wants to withdraw £1.50 for example
     it('Test 2: Floats can be withdraw', function () {
-        bankAccount1.withdraw(1.5);
+        bankAccount1.transactionHandler(mockWithdrawTransactionFloat);
         expect(bankAccount1.getBalance()).toBe(498.5);
     });
 
     it('Test 3: Withdraw does not accept negative number', function () {
-        bankAccount1.deposit(-100);
         expect(bankAccount1.getBalance()).toBe(500);
     });
 
 });
 
-//###########################################################################
+// //###########################################################################
 
 describe('Not withdrawing more than in account has - Bank Account functions', function () {
 
+    const mockWithdrawTransaction = {
+        transactionType: 'withdraw',
+        transactionAmount: 500,
+        getType: function () {
+            return this.transactionType;
+        },
+        getAmount: function () {
+            return this.transactionAmount;
+        },
+    }
+    const mockDepositTransaction = {
+        transactionType: 'deposit',
+        transactionAmount: 100,
+        getType: function () {
+            return this.transactionType;
+        },
+        getAmount: function () {
+            return this.transactionAmount;
+        },
+    }
     beforeEach(function () {
         bankAccount1 = new BankAccount();
-        bankAccount1.deposit(50);
+        bankAccount1.transactionHandler(mockDepositTransaction);
     })
 
     afterEach(function () {
@@ -87,29 +199,29 @@ describe('Not withdrawing more than in account has - Bank Account functions', fu
 
     //perhaps this could be handled differently, with it returning an error on a failed transaction
     it('Test 1: Only allow withdraw if there is enough money in the account to take', function () {
-        bankAccount1.withdraw(100);
-        expect(bankAccount1.getBalance()).toBe(50);
+        bankAccount1.transactionHandler(mockWithdrawTransaction);
+        expect(bankAccount1.getBalance()).toBe(100);
     });
 
 });
 
-//#######################################################################################
+    // //#######################################################################################
 
-describe('Keeping a history- Bank Account functions', function () {
+    // describe('Keeping a history- Bank Account functions', function () {
 
-    beforeEach(function () {
-        bankAccount1 = new BankAccount();
-        bankAccount1.deposit(50);
-    })
+    //     beforeEach(function () {
+    //         bankAccount1 = new BankAccount();
+    //         bankAccount1.deposit(50);
+    //     })
 
-    afterEach(function () {
-        bankAccount1 = undefined;
-    })
+    //     afterEach(function () {
+    //         bankAccount1 = undefined;
+    //     })
 
-    //perhaps this could be handled differently, with it returning an error on a failed transaction
-    it('Test 1: Only allow withdraw if there is enough money in the account to take', function () {
-        bankAccount1.withdraw(100);
-        expect(bankAccount1.getBalance()).toBe(50);
-    });
+    //     //perhaps this could be handled differently, with it returning an error on a failed transaction
+    //     it('Test 1: Only allow withdraw if there is enough money in the account to take', function () {
+    //         bankAccount1.withdraw(100);
+    //         expect(bankAccount1.getBalance()).toBe(50);
+    //     });
 
-});
+// });

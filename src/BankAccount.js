@@ -9,21 +9,33 @@ class BankAccount {
 
     };
 
+
+
     getBalance() {
         return this.#accountBalance;
     };
 
-    deposit(amount) {
+    #deposit(amount) {
         if (typeof amount === 'number' && amount > 0) {
             this.#accountBalance += amount;
         };
     };
 
-    withdraw(amount) {
-        if (typeof amount === 'number' && (this.#accountBalance - amount) > 0) {
-            this.#accountBalance -= amount;
+    #withdraw(amount) {
+        if (typeof amount === 'number' && (this.#accountBalance - amount) > 0 && amount > 0) {
+            this.#accountBalance = this.#accountBalance - amount;
         };
     }
+
+    transactionHandler(transaction) {
+        if (transaction.getType() === 'deposit') {
+            this.#deposit(transaction.getAmount())
+        }
+        if (transaction.getType() === 'withdraw') {
+            this.#withdraw(transaction.getAmount())
+        }
+        //  console.log((this.#accountBalance - transaction.getAmount()), " | ", (this.#accountBalance - transaction.getAmount()) > 0, " | ", typeof transaction.getAmount());
+    };
 
 };
 
