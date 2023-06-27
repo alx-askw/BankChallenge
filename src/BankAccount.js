@@ -19,6 +19,12 @@ class BankAccount {
         };
     };
 
+    withdraw(amount) {
+        if (typeof amount === 'number' && (this.#accountBalance - amount) > 0) {
+            this.#accountBalance -= amount;
+        };
+    }
+
 };
 
 module.exports = BankAccount; 

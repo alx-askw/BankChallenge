@@ -33,9 +33,9 @@ date       || credit  || debit  || balance
 - [ ] Meets the spec
 - [ ] Developed test-first
 - [ ] Passes tests and code is clean and well formatted
-- [ ] Encapsulates adding and storing Transactions in a class
-- [ ] Encapsulates Statement formatting in a class
-- [ ] Encapsulates Transaction data in a class
+- [ ] Encapsulates adding and storing Transactions in a class - bankAccount
+- [ ] Encapsulates Statement formatting in a class - statementHandle
+- [ ] Encapsulates Transaction data in a class - transActionData - 
 
 #### Extended
 - [ ] Can you format the console output?  Credited values should be GREEN and debited values should be RED.  The balance should be GREEN if positive and RED if negative

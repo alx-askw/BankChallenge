@@ -17,6 +17,8 @@ bankAccount   | balance@int            | deposit(amount)          | @int
 Tests:
 
 -Balance is increased by the correct amount
+-No depositing minus numbers
+-
 
 ## Withdraw
 As a client,
@@ -34,6 +36,24 @@ bankAccount   | balance@int | withdraw(amount), deposit(amount)| @int
 Tests:
 
 -Balance is decreased by the correct amount
+
+## Not withdrawing more money than the account has
+As the bank manager,
+I would like users to only withdraw money they have,
+So that I don't lose money.
+
+Functionality: Don't let the the balance go below zero (think about how to handle this. To withdraw as much as possible before hitting 0 or refusing the transaction outright).
+
+Domain Model:
+
+Objects | Properties | Messages | Output
+--------|------------|----------|-------
+bankAccount | balance            | validTransaction()  | @void 
+transactionHandler   |        | deposit(amount), withdraw(amount)          | 
+
+Tests:
+
+-Balance doesn't go below zero
 
 ## Keeping history of transactions
 As a client, 
@@ -89,25 +109,6 @@ stateMentHandler |            |  |
 Tests:
 
 -statement is formatted correctly
-
-## Not withdrawing more money than the account has
-As the bank manager,
-I would like users to only withdraw money they have,
-So that I don't lose money.
-
-Functionality: Don't let the the balance go below zero (think about how to handle this. To withdraw as much as possible before hitting 0 or refusing the transaction outright).
-
-Domain Model:
-
-Objects | Properties | Messages | Output
---------|------------|----------|-------
-bankAccount | balance            | validTransaction()  | @void 
-transactionHandler   |        | deposit(amount), withdraw(amount)          | 
-
-Tests:
-
--Balance doesn't go below zero
-
 ## Extended Criteria - formatting the console
 As a client,
 I would like my statements to be colour coded,
