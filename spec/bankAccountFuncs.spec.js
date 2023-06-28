@@ -205,23 +205,74 @@ describe('Not withdrawing more than in account has - Bank Account functions', fu
 
 });
 
-    // //#######################################################################################
+//#######################################################################################
 
-    // describe('Keeping a history- Bank Account functions', function () {
+describe('Keeping a history- Bank Account functions', function () {
 
-    //     beforeEach(function () {
-    //         bankAccount1 = new BankAccount();
-    //         bankAccount1.deposit(50);
-    //     })
 
-    //     afterEach(function () {
-    //         bankAccount1 = undefined;
-    //     })
+    const mockDepositTransaction = {
+        transactionType: 'deposit',
+        transactionAmount: 100,
+        getType: function () {
+            return this.transactionType;
+        },
+        getAmount: function () {
+            return this.transactionAmount;
+        }
+    }
+    let historySpy;
+    beforeEach(function () {
+        bankAccount1 = new BankAccount();
+        //spies need to be declared in before each
+        historySpy = spyOn(bankAccount1, "historyHandler");
+    })
 
-    //     //perhaps this could be handled differently, with it returning an error on a failed transaction
-    //     it('Test 1: Only allow withdraw if there is enough money in the account to take', function () {
-    //         bankAccount1.withdraw(100);
-    //         expect(bankAccount1.getBalance()).toBe(50);
-    //     });
+    afterEach(function () {
+        bankAccount1 = undefined;
+    })
 
-// });
+    //perhaps this could be handled differently, with it returning an error on a failed transaction
+    //Can't test private fields like the transactionHistory
+    it('Test 1: check if history handler is called', function () {
+        bankAccount1.transactionHandler(mockDepositTransaction);
+        expect(historySpy).toHaveBeenCalled();
+    });
+
+
+});
+
+//#################################################################################
+
+describe('Dating transactions- Bank Account functions', function () {
+
+
+    const mockDepositTransaction = {
+        transactionType: 'deposit',
+        transactionAmount: 100,
+        getType: function () {
+            return this.transactionType;
+        },
+        getAmount: function () {
+            return this.transactionAmount;
+        }
+    }
+    let historySpy;
+    beforeEach(function () {
+        bankAccount1 = new BankAccount();
+        //spies need to be declared in before each
+        historySpy = spyOn(bankAccount1, "historyHandler");
+    })
+
+    afterEach(function () {
+        bankAccount1 = undefined;
+    })
+
+    //perhaps this could be handled differently, with it returning an error on a failed transaction
+    //Can't test private fields like the transactionHistory
+    it('Test 1: check if history handler is called', function () {
+        bankAccount1.transactionHandler(mockDepositTransaction);
+        expect(historySpy).toHaveBeenCalled();
+    });
+
+
+});

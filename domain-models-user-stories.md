@@ -1,6 +1,6 @@
 # Bank Challenge User Stories & Domain Models
 
-## Deposit 
+## Deposit /
 As a client,
 I would like to be able to deposit money to my bank account,
 So that my money is safe.
@@ -20,7 +20,7 @@ Tests:
 -No depositing minus numbers
 -
 
-## Withdraw
+## Withdraw /
 As a client,
 I would like to be able to withdraw my money from my bank account,
 So that I can spend my money.
@@ -37,7 +37,7 @@ Tests:
 
 -Balance is decreased by the correct amount
 
-## Not withdrawing more money than the account has
+## Not withdrawing more money than the account has /
 As the bank manager,
 I would like users to only withdraw money they have,
 So that I don't lose money.
@@ -55,7 +55,7 @@ Tests:
 
 -Balance doesn't go below zero
 
-## Keeping history of transactions
+## Keeping history of transactions / 
 As a client, 
 I would like to keep a history of each transaction,
 So that I see where I spent my money.
