@@ -1,5 +1,6 @@
 const BankAccount = require('./src/BankAccount');
 const TransactionObject = require('./src/TransactionObject');
+const StatementPrinter = require('./src/StatementPrinter');
 
 // 1. a client makes a deposit of 1000 on 10-01-2012
 // 2. a deposit of 2000 on 13-01-2012
@@ -13,10 +14,13 @@ const TransactionObject = require('./src/TransactionObject');
 // 10 /01 / 2012 || 1000.00 ||        || 1000.00
 
 
-const transaction1 = new TransactionObject('deposit', 500, 222);
-const transaction2 = new TransactionObject('withdraw', 100, 222);
+const transaction1 = new TransactionObject('deposit', 1000.00, '10/01/2012');
+const transaction2 = new TransactionObject('deposit', 2000.00, '13/01/2012');
+const transaction3 = new TransactionObject('withdraw', 500.00, '14/01/2012');
 const bankacc1 = new BankAccount();
 
 bankacc1.transactionHandler(transaction1);
-
 bankacc1.transactionHandler(transaction2);
+bankacc1.transactionHandler(transaction3);
+
+bankacc1.printStatement(StatementPrinter.statementHandler)

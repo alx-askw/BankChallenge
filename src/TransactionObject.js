@@ -3,12 +3,15 @@ class TransactionObject {
     #transactionAmount;
     #transactionDate;
 
+    date = new Date()
     //date of transaction needs to be set to something that its either passed through or is defaulted to the current time if no date is supplied
-    constructor(transactionType = undefined, transactionAmount = 0, transactionDate = new Date) {
+    constructor(transactionType = undefined, transactionAmount = 0, transactionDate = this.date.toLocaleDateString('en-GB')) {
         this.#transactionType = transactionType;
         this.#transactionAmount = transactionAmount;
         this.#transactionDate = transactionDate;
     }
+
+    ;
     getType() {
         return this.#transactionType;
     }
@@ -17,6 +20,9 @@ class TransactionObject {
         return this.#transactionAmount;
     }
 
+    getDate() {
+        return this.#transactionDate;
+    }
 
 
 };

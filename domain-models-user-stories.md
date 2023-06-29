@@ -73,7 +73,7 @@ Tests:
 
 -History is correctly recorded
 
-## Dating transactions
+## Dating transactions / 
 As I client,
 I would like bank statements to include the dat of each transaction,
 So that I can track my money.

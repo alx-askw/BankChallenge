@@ -1,3 +1,5 @@
+const { chocolate } = require("color-name");
+
 class BankAccount {
 
     #accountBalance;
@@ -29,7 +31,7 @@ class BankAccount {
 
     historyHandler(transaction) {
         this.#transactionHistory.push([transaction, this.#accountBalance]);
-        console.log(this.#transactionHistory);
+        // console.log(this.#transactionHistory);
     }
 
 
@@ -38,13 +40,22 @@ class BankAccount {
         return (typeof amount === 'number' && (this.#accountBalance - amount) > 0 && amount > 0)
     }
 
+    getTransArray() {
+        return this.#transactionHistory;
+    }
+
+    printStatement(printer) {
+        // printer(this.#transactionHistory.reverse())
+        console.log(printer(this.#transactionHistory.reverse()));
+    }
+
+    consolePrinter() {
+    }
+
+    //refactored this with ternaries :)
     transactionHandler(transaction) {
-        if (transaction.getType() === 'deposit') {
-            this.#deposit(transaction.getAmount())
-        }
-        if (transaction.getType() === 'withdraw') {
-            this.#withdraw(transaction.getAmount())
-        };
+        transaction.getType() === 'deposit' && this.#deposit(transaction.getAmount()); //deposit
+        transaction.getType() === 'withdraw' && this.#withdraw(transaction.getAmount()); //withdraw
         this.historyHandler(transaction);
     };
 };

@@ -225,6 +225,7 @@ describe('Keeping a history- Bank Account functions', function () {
         bankAccount1 = new BankAccount();
         //spies need to be declared in before each
         historySpy = spyOn(bankAccount1, "historyHandler");
+        bankAccount1.transactionHandler(mockDepositTransaction);
     })
 
     afterEach(function () {
@@ -234,9 +235,12 @@ describe('Keeping a history- Bank Account functions', function () {
     //perhaps this could be handled differently, with it returning an error on a failed transaction
     //Can't test private fields like the transactionHistory
     it('Test 1: check if history handler is called', function () {
-        bankAccount1.transactionHandler(mockDepositTransaction);
         expect(historySpy).toHaveBeenCalled();
     });
+
+    // it('Test 2: does length of array increase with each transaction', function () {
+    //     expect(bankAccount1.getTransArray().length).toEqual(1);
+    // });
 
 
 });
@@ -272,6 +276,40 @@ describe('Dating transactions- Bank Account functions', function () {
     it('Test 1: check if history handler is called', function () {
         bankAccount1.transactionHandler(mockDepositTransaction);
         expect(historySpy).toHaveBeenCalled();
+    });
+
+
+});
+
+
+//#################################################################################
+
+describe('Statement Printing - Bank Account functions', function () {
+
+
+    const mockDepositTransaction = {
+        transactionType: 'deposit',
+        transactionAmount: 100,
+        getType: function () {
+            return this.transactionType;
+        },
+        getAmount: function () {
+            return this.transactionAmount;
+        }
+    }
+    let printerSpy;
+    beforeEach(function () {
+        bankAccount1 = new BankAccount();
+        printerSpy = spyOn(bankAccount1, 'printStatement');
+    })
+
+    afterEach(function () {
+        bankAccount1 = undefined;
+    })
+
+    it('Test 1: check if statement printer is called is called', function () {
+        bankAccount1.printStatement();
+        expect(printStatement).toHaveBeenCalled();
     });
 
 
