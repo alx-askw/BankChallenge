@@ -1,4 +1,3 @@
-
 class StatementPrinter {
     static #printingStrings = [];
     static #statementHeader = `date${"".padEnd(11 - 4)}|| credit  || debit  || balance`;

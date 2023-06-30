@@ -17,10 +17,10 @@ const StatementPrinter = require('./src/StatementPrinter');
 const transaction1 = new TransactionObject('deposit', 1000.00, '10/01/2012');
 const transaction2 = new TransactionObject('deposit', 2000.00, '13/01/2012');
 const transaction3 = new TransactionObject('withdraw', 500.00, '14/01/2012');
-const bankacc1 = new BankAccount();
+const exampleBankAccount1 = new BankAccount();
 
-bankacc1.transactionHandler(transaction1);
-bankacc1.transactionHandler(transaction2);
-bankacc1.transactionHandler(transaction3);
+exampleBankAccount1.transactionHandler(transaction1);
+exampleBankAccount1.transactionHandler(transaction2);
+exampleBankAccount1.transactionHandler(transaction3);
 
-bankacc1.printStatement(StatementPrinter.statementHandler)
+exampleBankAccount1.printStatement(StatementPrinter.statementHandler)

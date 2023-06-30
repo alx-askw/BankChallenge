@@ -1,5 +1,3 @@
-const { chocolate } = require("color-name");
-
 class BankAccount {
 
     #accountBalance;
