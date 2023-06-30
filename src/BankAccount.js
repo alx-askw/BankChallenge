@@ -50,6 +50,7 @@ class BankAccount {
     }
 
     consolePrinter() {
+
     }
 
     //refactored this with ternaries :)
