@@ -1,5 +1,15 @@
 # Bank
 
+## Submission notes:
+
+* npm install
+* npm test
+* node/index.js for criteria acceptance
+* for user stories and domain models - see domain-models-user-stories.md
+* references in references.md
+
+
+
 This challenge helps you practice your OO design skills.
 
 You'll work alone, and you'll also review your own code so you can practice reflecting on and improving your own work.
