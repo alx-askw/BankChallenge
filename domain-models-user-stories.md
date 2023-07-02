@@ -12,7 +12,7 @@ Domain Model:
 Objects | Properties | Messages | Output
 --------|------------|----------|-------
 transactionHandler |            | deposit(int) | @void
-bankAccount   | balance@int            | deposit(amount)          | @int
+bankAccount   | balance@int            | deposit(amount)          | @void
 
 Tests:
 
@@ -31,7 +31,7 @@ Domain Model:
 
 Objects | Properties | Messages | Output
 --------|------------|----------|-------
-bankAccount   | balance@int | withdraw(amount), deposit(amount)| @int
+bankAccount   | balance@int | withdraw(amount), deposit(amount)| @void
 
 Tests:
 
@@ -49,7 +49,7 @@ Domain Model:
 Objects | Properties | Messages | Output
 --------|------------|----------|-------
 bankAccount | balance            | validTransaction()  | @void 
-transactionHandler   |        | deposit(amount), withdraw(amount)          | 
+transactionHandler   |        | deposit(amount), withdraw(amount)          | @void
 
 Tests:
 
@@ -67,7 +67,7 @@ Domain Model:
 Objects | Properties | Messages | Output
 --------|------------|----------|-------
 bankAccount | transactionHistory@Array\[\]            |  |  @void 
-   |        |           | 
+  transactionHandler |        |           | @void
 
 Tests:
 
@@ -84,8 +84,8 @@ Domain Model:
 
 Objects | Properties | Messages | Output
 --------|------------|----------|-------
- |  |  |  
-   |        |           | 
+ transactionHandler| transactionType@string, transactionAmount@int, transactionDate@string |  |  @void
+
 
 Tests:
     -Date is correct
@@ -103,8 +103,8 @@ Domain Model:
 
 Objects | Properties | Messages | Output
 --------|------------|----------|-------
-stateMentHandler |            |  | 
-   |        |           | 
+bankAccount | arrayOfTransaction@array[\@ transactionObjects]|printStatement()  | @string 
+statementPrinter |        |statementHandler           | @string 
 
 Tests:
 
@@ -120,9 +120,8 @@ Domain Model:
 
 Objects | Properties | Messages | Output
 --------|------------|----------|-------
- |            |  | 
-   |        |           | 
-
+bankAccount | arrayOfTransaction@array[\@ transactionObjects]|printStatement()  | @string 
+statementPrinter |        |statementHandler           | @string 
 Tests:
 
 -Visually confirm this?
