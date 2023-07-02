@@ -238,11 +238,6 @@ describe('Keeping a history- Bank Account functions', function () {
         expect(historySpy).toHaveBeenCalled();
     });
 
-    // it('Test 2: does length of array increase with each transaction', function () {
-    //     expect(bankAccount1.getTransArray().length).toEqual(1);
-    // });
-
-
 });
 
 //#################################################################################
@@ -287,29 +282,23 @@ describe('Dating transactions- Bank Account functions', function () {
 describe('Statement Printing - Bank Account functions', function () {
 
 
-    const mockDepositTransaction = {
-        transactionType: 'deposit',
-        transactionAmount: 100,
-        getType: function () {
-            return this.transactionType;
-        },
-        getAmount: function () {
-            return this.transactionAmount;
-        }
+    mockPrinter = () => {
+        testArray = ["a", "b", "c"]
+        return testArray;
     }
     let printerSpy;
     beforeEach(function () {
         bankAccount1 = new BankAccount();
-        printerSpy = spyOn(bankAccount1, 'printStatement');
+        printerSpy = spyOn(console, 'log');
     })
 
     afterEach(function () {
         bankAccount1 = undefined;
     })
 
-    it('Test 1: check if statement printer is called is called', function () {
-        bankAccount1.printStatement();
-        expect(printStatement).toHaveBeenCalled();
+    it('Test 1: check if statement printers console.log is called', function () {
+        bankAccount1.printStatement(mockPrinter);
+        expect(printerSpy).toHaveBeenCalled();
     });
 
 

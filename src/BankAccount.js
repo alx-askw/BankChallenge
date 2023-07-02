@@ -43,7 +43,6 @@ class BankAccount {
     }
 
     printStatement(printer) {
-        // printer(this.#transactionHistory.reverse())
         console.log(printer(this.#transactionHistory.reverse()));
     }
 
